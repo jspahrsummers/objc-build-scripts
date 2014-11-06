@@ -40,7 +40,7 @@ config ()
     #
     # Individual names can be quoted to avoid word splitting.
     : ${SCHEMES:=$(xcodebuild -list -project "$XCODEPROJ" 2>/dev/null | awk -f "$SCRIPT_DIR/schemes.awk")}
-    
+
     export XCWORKSPACE
     export XCODEPROJ
     export BOOTSTRAP
@@ -105,9 +105,6 @@ parse_build ()
 build_scheme ()
 {
     local scheme=$1
-
-    echo "*** Cleaning $scheme..."
-    run_xctool -scheme "$scheme" clean >/dev/null || exit $?
 
     echo "*** Building and testing $scheme..."
     echo
