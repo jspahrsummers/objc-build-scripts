@@ -60,6 +60,12 @@ main ()
 {
     config
 
+    if [ -n "$REQUIRED_TOOLS" ]
+        then
+        echo "*** Checking dependencies..."
+        check_deps
+    fi
+
     if [ -f "$BOOTSTRAP" ]
     then
         echo "*** Bootstrapping..."
@@ -80,6 +86,19 @@ main ()
 
         exit $status
     )
+}
+
+check_deps ()
+{
+    for tool in $REQUIRED_TOOLS
+    do
+        which -s "$tool"
+        if [ "$?" -ne "0" ]
+            then
+            echo "*** Error: $tool not found. Please install it and bootstrap again."
+            exit 1
+        fi
+    done
 }
 
 find_pattern ()
