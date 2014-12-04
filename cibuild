@@ -95,7 +95,7 @@ check_deps ()
         which -s "$tool"
         if [ "$?" -ne "0" ]
             then
-            echo "*** Error: $tool not found. Please install it and bootstrap again."
+            echo "*** Error: $tool not found. Please install it and cibuild again."
             exit 1
         fi
     done
