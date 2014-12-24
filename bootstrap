@@ -1,6 +1,10 @@
 #!/bin/bash
 
+export SCRIPT_DIR=$(dirname "$0")
 
+##
+## Bootstrap Process
+##
 
 main ()
 {
